@@ -3,9 +3,10 @@
 Shoghlana is a backend system for a local services marketplace where customers can post jobs and skilled workers (plumbers, electricians, etc.) can apply for them.
 
 ## Tech Stack
-- Java 17, Spring Boot
+- Java 21, Spring Boot
 - Spring Security, JWT, OAuth2
 - JPA / Hibernate
+- Events
 - MySQL, Redis
 - Docker & Docker Compose
 
