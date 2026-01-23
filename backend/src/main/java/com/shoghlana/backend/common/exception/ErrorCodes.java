@@ -1,0 +1,23 @@
+package com.shoghlana.backend.common.exception;
+
+public enum ErrorCodes {
+
+    UNAUTHORIZED,
+    UN_VERIFIED,
+    USER_DISABLED,
+    USER_LOCKED,
+    FORBIDDEN,
+    INVALID_CREDENTIALS,
+
+    USER_NOT_FOUND,
+    USER_ALREADY_EXISTS,
+
+    JOB_NOT_FOUND,
+    JOB_PRICE_NOT_MATCHED,
+    JOB_CLOSED,
+    JOB_ALREADY_ASSIGNED,
+
+    VALIDATION_ERROR,
+
+    INTERNAL_SERVER_ERROR
+}
