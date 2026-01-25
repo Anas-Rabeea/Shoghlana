@@ -1,0 +1,54 @@
+services:
+  # MySQL and PHPMyAdmin For Interface
+  mysql:
+    container_name: shoghlana_mysql
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: '1!!@root'
+      # MYSQL_DATABASE: tshoghlana
+      MYSQL_USER: user123
+      MYSQL_PASSWORD: 'pass123!'
+    ports:
+      - "3030:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - shoghlana-net
+    restart: unless-stopped
+
+  phpmyadmin:
+    container_name: shoghlana_phpmyadmin
+    image: phpmyadmin/phpmyadmin:latest
+    environment:
+      PMA_HOST: ms_mysql
+      PMA_USER: root
+      PMA_PASSWORD: '1!!@root'
+    ports:
+      - "3031:80"
+    depends_on:
+      - mysql
+    networks:
+      - shoghlana-net
+    restart: unless-stopped
+  redis:
+    networks:
+      shoghlana-net:
+    container_name: shoghlana_redis
+    image: redis/
+    ports:
+      - "3032:"
+    volumes:
+      - redis_data
+
+
+# Networks
+networks:
+  shoghlana-net:
+    driver: bridge
+
+
+
+# Volumes
+volumes:
+  mysql_data:
+  redis_data:
