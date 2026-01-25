@@ -1,7 +1,36 @@
 spring:
 
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    default-encoding: UTF-8
+    username: ${gmail_username}
+    password: ${gmail_password}
+    properties:
+      mail:
+        smtp:
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+          auth: true
+          starttls:
+            enable: true
+            required: true
+  #          ssl: # port = 465
+  #            trust: smtp.gmail.com
+  data:
+    redis:
+      database: 0
+      host: localhost
+      port: 8099
+      repositories:
+        enabled: false
+
+  cache:
+    type: REDIS
+
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/shoghlana
+    url: jdbc:mysql://127.0.0.1:3306/tshoghlana
     username: root
     password: ${MYSQL_PASSWORD}
     driver-class-name: mysql.cj.jdbc.Driver
@@ -27,6 +56,11 @@ spring:
 
   application:
     name: backend
+    security:
+      jwt:
+        expiration:
+          access-token: 900000 # 15 mins
+          refresh-token: 432000000 # 5 days
 
 
 ## Extensive Logging :

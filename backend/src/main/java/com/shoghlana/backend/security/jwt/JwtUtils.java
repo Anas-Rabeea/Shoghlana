@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 import java.security.Key;
 import java.util.Date;
 
-import static com.anascoding.auth_system.security.jwt.TokenType.ACCESS_TOKEN;
-import static com.anascoding.auth_system.security.jwt.TokenType.REFRESH_TOKEN;
+import static com.shoghlana.backend.security.jwt.TokenType.ACCESS_TOKEN;
+import static com.shoghlana.backend.security.jwt.TokenType.REFRESH_TOKEN;
 
 @Component
 public class JwtUtils {

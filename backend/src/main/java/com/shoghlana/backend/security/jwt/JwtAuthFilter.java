@@ -31,7 +31,6 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             throws ServletException, IOException
     {
 
-        // TODO -- what if the user is already authenticated and go to this endpoint > redirect to /feed
         String authorizationHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
 
         if(authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")){
@@ -40,7 +39,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         }
         String extractedToken = authorizationHeader.substring(7);
 
-        // check if the token is an access token
+
         if (!isAccessToken(extractedToken)) {
             filterChain.doFilter(request, response);
             return;
@@ -79,7 +78,8 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     }
 
 
-    private boolean isAccessToken(String extractedToken){
+    private boolean isAccessToken(String extractedToken)
+    {
         try
         {
             Object claim = jwtUtils.extractClaimByKey(extractedToken, "type");

@@ -24,12 +24,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-import java.util.UUID;
 
 @Entity
-@Table(name = "app_user")
+@Table(name = "app_user" ,schema = "tshoghlana")
 @Builder
 @NoArgsConstructor @AllArgsConstructor  @Getter @Setter
 public class AppUser implements UserDetails {
@@ -51,15 +49,15 @@ public class AppUser implements UserDetails {
 
     private String password;
 
-    // for verification
+
     private boolean emailVerified;
     private boolean phoneVerified;
 
 
     @Enumerated(EnumType.STRING)
-    private AppAuthProvider appAuthProvider; // this will be the type of authentication
-    // for oAuth2
-    private String providerId; // OAuth ID Like Google or Facebook ID
+    private AppAuthProvider appAuthProvider;
+
+    private String providerId;
 
     // Authorization
     @ManyToMany

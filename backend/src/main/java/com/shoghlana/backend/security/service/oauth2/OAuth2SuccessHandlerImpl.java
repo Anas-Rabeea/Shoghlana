@@ -1,6 +1,9 @@
 package com.shoghlana.backend.security.service.oauth2;
 
 
+import com.shoghlana.backend.security.entity.AppAuthProvider;
+import com.shoghlana.backend.security.entity.AppUser;
+import com.shoghlana.backend.security.entity.Roles;
 import com.shoghlana.backend.security.jwt.JwtUtils;
 import com.shoghlana.backend.security.repository.AppUserRepo;
 import jakarta.servlet.http.HttpServletRequest;
@@ -15,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.Set;
 
 @Service
 @Slf4j
@@ -79,7 +83,7 @@ public class OAuth2SuccessHandlerImpl extends SimpleUrlAuthenticationSuccessHand
                 .emailVerified(true)
                 .providerId(providerId)
                 .appAuthProvider(provider)
-                .role(Role.CUSTOMER)
+                .roles(Set.of(Roles.builder().name("CUSTOMER").build())) // TODO--
                 .build();
 
         return appUserRepo.save(user);

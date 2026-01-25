@@ -2,6 +2,7 @@ package com.shoghlana.backend.security.service.phone;
 
 
 
+import com.shoghlana.backend.security.entity.AppUser;
 import com.shoghlana.backend.security.repository.AppUserRepo;
 import com.shoghlana.backend.security.service.OtpService;
 import lombok.RequiredArgsConstructor;

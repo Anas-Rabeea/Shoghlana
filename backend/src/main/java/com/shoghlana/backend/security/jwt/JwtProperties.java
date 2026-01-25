@@ -17,7 +17,6 @@ public class JwtProperties {
     @Value( value = "${application.security.jwt.expiration.access-token}")
     private long accessTokenExpiration; // in milliseconds
 
-    @Value("${JWT_SECRET_KEY128}") // from IDEs environment variable
-    // TODO -- Add this env to the running server environment variables
+    @Value("${JWT_SECRET_KEY128}")
     private String SECRET_KEY;
 }

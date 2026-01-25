@@ -26,7 +26,7 @@ public class SmsService {
                 new com.twilio.type.PhoneNumber(to), // to
                 new com.twilio.type.PhoneNumber(twilioProperties.getTWILIO_PHONE_NUMBER()), // from (Twilio)
                 """
-                        %s   is your OTP for Mehna.
+                        %s   is your OTP for shoghlana.
                         Don't Share this code with anyone.
                         """.formatted(otp)
         ).create();

@@ -1,8 +1,9 @@
 package com.shoghlana.backend.security;
 
-import com.anascoding.auth_system.security.jwt.JwtAuthFilter;
-import com.anascoding.auth_system.service.oauth.OAuth2SuccessHandlerImpl;
-import com.anascoding.auth_system.service.oauth.OAuth2UserServiceImpl;
+
+import com.shoghlana.backend.security.jwt.JwtAuthFilter;
+import com.shoghlana.backend.security.service.oauth2.OAuth2SuccessHandlerImpl;
+import com.shoghlana.backend.security.service.oauth2.OAuth2UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

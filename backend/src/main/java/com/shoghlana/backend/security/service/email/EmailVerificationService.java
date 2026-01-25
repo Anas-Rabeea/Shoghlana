@@ -1,6 +1,7 @@
 package com.shoghlana.backend.security.service.email;
 
 
+import com.shoghlana.backend.security.entity.AppUser;
 import com.shoghlana.backend.security.repository.AppUserRepo;
 import com.shoghlana.backend.security.service.EmailSenderService;
 import lombok.RequiredArgsConstructor;
@@ -17,9 +18,7 @@ import java.time.LocalDateTime;
 @Slf4j
 public class EmailVerificationService {
 
-    // Key = token , Value = email
-    // because user can send 2 verifications in a short period of time
-    // so we make token which will be unique as the key
+
     private static final Duration token_ttl = Duration.ofMinutes(3);
 
     private final RedisTemplate<String,String> redisTemplate;
@@ -31,9 +30,7 @@ public class EmailVerificationService {
     public void sendVerificationEmail(String email) {
 
         String token =  verificationTokenService.generateEmailVerificationToken(10);
-        // Token_2RI#@L : To not make token guessing easy
-        String redisKey = "email-verification:Token_2RI#@L:" + token;
-        // save  the token with email in redis
+        String redisKey = "email-verification:token:" + token;
         redisTemplate
                 .opsForValue()
                 .set(redisKey,email ,token_ttl);
@@ -57,11 +54,9 @@ public class EmailVerificationService {
 
     }
 
-    // token is sent to the user so this method will verify the incoming token
-    // from the link the user clicked on it his mail
     public void verifyEmail(String token){
 
-        String redisKey = "email-verification:Token_2RI#@L:" + token;
+        String redisKey = "email-verification:token:" + token;
         String email = redisTemplate
                             .opsForValue()
                             .get(redisKey);

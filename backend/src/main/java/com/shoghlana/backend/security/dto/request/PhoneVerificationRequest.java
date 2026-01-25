@@ -1,6 +1,6 @@
 package com.shoghlana.backend.security.dto.request;
 
-import com.anascoding.auth_system.validator.EgyptianPhone.ValidEgyptianPhone;
+import com.shoghlana.backend.common.validation.EgyptianPhone.ValidEgyptianPhone;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
